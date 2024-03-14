@@ -1,0 +1,83 @@
+<script>
+    let s1 = {"nama": "andi", nilai: 80};
+    let s2 = {"nama": "ali", nilai: 90};
+    let s3 = {"nama": "aji", nilai: 70};
+    let s4 = {"nama": "ani", nilai: 85};
+    let s5 = {"nama": "ando", nilai: 95};
+    let s6 = {"nama": "alm", nilai: 50};
+    let s7 = {"nama": "andu", nilai: 10};
+    let s8 = {"nama": "jamal", nilai: 70};
+    let s9 = {"nama": "udin", nilai: 10};
+    let s10 = {"nama": "sarip", nilai: 80};
+
+    let siswa = [s1, s2, s3, s4, s5, s6, s7, s8, s9, s10];
+</script>
+<body bgcolor="#200E3A">
+<table style=" color:#FFD1E3;background-color: #030637;
+            padding: 10px; text-align: center; width: 100%;">
+    <h1 style=" color:#FFD1E3;text-align: center;">Daftar Nilai Siswa</h1>
+    <thead>
+        <tr bgcolor="#3C0753">
+            <th>No</th>
+            <th>Nama</th>
+            <th>Nilai</th>
+            <th>keterangan</th>
+            <th>grade</th>
+            <th>predikat</th>
+        </tr>
+    </thead>
+    <tbody>
+        <script>
+            let no = 1;
+            let warna;
+            for (s of siswa) {
+                let ket = (s.nilai >= 60) ? "lulus" : "gagal";
+                let grade = "";
+                let predikat = "";
+
+                if (s.nilai > 80 && s.nilai <= 100) grade = "A";
+                else if (s.nilai > 75 && s.nilai <= 80) grade = "B";
+                else if (s.nilai > 60 && s.nilai <= 75) grade = "C";
+                else if (s.nilai > 30 && s.nilai <= 60) grade = "D";
+                else if (s.nilai >= 0 && s.nilai <= 30) grade = "E";
+
+                switch (grade) {
+                    case "A":
+                        predikat = "Sempurna";
+                        break;
+                    case "B":
+                        predikat = "Baik";
+                        break;
+                    case "C":
+                        predikat = "Cukup";
+                        break;
+                    case "D":
+                        predikat = "Kurang";
+                        break;
+                    case "E":
+                        predikat = "Buruk";
+                        break;
+                    default:
+                        predikat = "";
+                        break;
+                }
+
+                warna = (no % 2 == 0) ? '#3C0753' : '#720455';
+                document.write(`
+                    <tr bgcolor="${warna}">
+                    <td>${no}</td>
+                    <td>${s.nama}</td>
+                    <td>${s.nilai}</td>
+                    <td>${ket}</td>
+                    <td>${grade}</td>
+                    <td>${predikat}</td>
+                    </tr>`);
+                no++;
+            }
+        </script>
+    </tbody>
+</table>
+<p style=" color:#FFD1E3;">Nama Wali Guru</p>
+<br> <br> <br>
+<p style=" color:#FFD1E3;">Tanda Tangan</p>
+</body>
